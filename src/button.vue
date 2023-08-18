@@ -1,22 +1,22 @@
 <template>
   <button class="g-button" :class="{[`icon-${iconPosition}`]:true}">
+    <g-icon :name="icon" v-if="icon"></g-icon>
     <div class="content"><slot></slot></div>
-    <svg class="icon" v-if="icon">
-      <use v-bind:xlink:href="`#i-${icon}`"></use>
-    </svg>
   </button>
 </template>
 
 <script>
 
+import Icon from "./icon.vue";
+
 export default {
+  components: {Icon},
   props:{
     icon: {},
     iconPosition: {
       type: String,
       default: 'left',
       validator (value){
-        console.log(value);
         return value === 'left' || value === 'right'
       }
     }
