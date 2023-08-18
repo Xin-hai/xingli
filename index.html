@@ -18,18 +18,35 @@
             --border-radius: 4px;
             --border-color-hover: #666
         }
-        #app{
+
+        #app {
             margin: 20px;
         }
+
         body {
             font-size: var(--font-size);
+        }
+    </style>
+    <style>
+        .icon {
+            height: 1em;
+            width: 1em;
         }
     </style>
 </head>
 <body>
 <div id="app">
-    <g-button></g-button>
+    <g-button icon="settings">
+        我爱JS
+    </g-button>
+    <g-button>
+        我爱JS
+    </g-button>
+    <g-button icon="settings" icon-position="right">
+        我爱JS
+    </g-button>
 </div>
 <script src="./src/app.js" type="module"></script>
+<script src="//at.alicdn.com/t/c/font_4216839_1w2medbtq3t.js"></script>
 </body>
 </html>
