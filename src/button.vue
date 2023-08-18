@@ -1,15 +1,9 @@
 <template>
-  <button class="g-button" v-if="iconPosition === 'right'">
-    <slot></slot>
+  <button class="g-button" :class="{[`icon-${iconPosition}`]:true}">
+    <div class="content"><slot></slot></div>
     <svg class="icon" v-if="icon">
       <use v-bind:xlink:href="`#i-${icon}`"></use>
     </svg>
-  </button>
-  <button class="g-button" v-else>
-    <svg class="icon" v-if="icon">
-      <use v-bind:xlink:href="`#i-${icon}`"></use>
-    </svg>
-    <slot></slot>
   </button>
 </template>
 
@@ -29,6 +23,10 @@ export default {
   border-radius: var(--border-radius);
   border: 1px solid var(--border-color);
   background: var(--button-bg);
+  display: inline-flex;
+  justify-content: center;
+  align-items: center;
+  vertical-align: middle;
 
   &:hover {
     border-color: var(--border-color-hover);
@@ -40,6 +38,23 @@ export default {
 
   &:focus {
     outline: none;
+  }
+  > .icon{
+    order: 1;
+    margin-right: .1em;
+  }
+  > .content{
+    order: 2;
+  }
+  &.icon-right{
+    > .icon{
+      order: 2;
+      margin-right: 0;
+      margin-left: .1em;
+    }
+    > .content {
+      order: 1;
+    }
   }
 }
 
