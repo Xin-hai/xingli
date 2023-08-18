@@ -19,5 +19,8 @@
   "bugs": {
     "url": "https://github.com/Xin-hai/xingli/issues"
   },
-  "homepage": "https://github.com/Xin-hai/xingli#readme"
+  "homepage": "https://github.com/Xin-hai/xingli#readme",
+  "dependencies": {
+    "vue": "^2.5.16"
+  }
 }
