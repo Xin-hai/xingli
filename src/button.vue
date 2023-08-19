@@ -8,11 +8,10 @@
 </template>
 
 <script>
-
 import Icon from "./icon.vue";
 
 export default {
-  components: {Icon},
+  components: {'g-icon': Icon},
   props:{
     icon: {},
     loading: {
