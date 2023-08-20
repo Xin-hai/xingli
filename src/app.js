@@ -34,6 +34,7 @@ const expect = chai.expect
     vm.$mount()
     let useElement = vm.$el.querySelector('use')
     const href = useElement.getAttribute('xlink:href')
+    console.log(href)
     expect(href).to.equal('#i-settings')
     vm.$el.remove()
     vm.$destroy()
