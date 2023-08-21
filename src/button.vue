@@ -11,6 +11,7 @@
 import Icon from "./icon.vue";
 
 export default {
+  name: 'XingButton',
   components: {'g-icon': Icon},
   props:{
     icon: {},

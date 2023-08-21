@@ -6,7 +6,7 @@
 
 <script>
 export default {
-  name: "",
+  name: "XingButtonGroup",
   mounted() {
     for(let node of this.$el.children) {
       let name = node.nodeName.toLowerCase()

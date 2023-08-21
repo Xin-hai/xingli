@@ -28,26 +28,38 @@
         }
     </style>
     <style>
-
+        .box {
+            margin: 20px;
+        }
     </style>
 </head>
 <body>
 <div id="app">
-    <g-button icon="settings" :loading="loading1" @click.native="loading1=!loading1">
-        按钮
-    </g-button>
-    <g-button :loading="loading2" @click.native="loading2=!loading2">
-        按钮
-    </g-button>
-    <g-button icon="settings" icon-position="right" name="download" :loading="loading3" @click.native="loading3=!loading3">
-        按钮
-    </g-button>
-    <g-button-group>
-        <g-button icon="left">上一页</g-button>
-        <g-button>更多</g-button>
-        <g-button icon="right" icon-position="right">下一页</g-button>
-    </g-button-group>
+    <div class="box">
+        <g-input value="张" error="姓名不能少于两个字"></g-input>
+    </div>
+    <div class="box">
+        <g-input value="李四"></g-input>
+        <g-input value="王五" :disabled="true"></g-input>
+        <g-input value="才六" :readonly="true"></g-input>
+    </div>
 
+    <div class="box">
+        <g-button icon="settings" :loading="loading1" @click.native="loading1=!loading1">
+            按钮
+        </g-button>
+        <g-button :loading="loading2" @click.native="loading2=!loading2">
+            按钮
+        </g-button>
+        <g-button icon="settings" icon-position="right" name="download" :loading="loading3" @click.native="loading3=!loading3">
+            按钮
+        </g-button>
+        <g-button-group>
+            <g-button icon="left">上一页</g-button>
+            <g-button>更多</g-button>
+            <g-button icon="right" icon-position="right">下一页</g-button>
+        </g-button-group>
+    </div>
 </div>
 <script src="./src/app.js"></script>
 
