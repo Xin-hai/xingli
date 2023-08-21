@@ -27,7 +27,7 @@ export default {
       if(!obj){return []}
       let array = []
       if(obj.span){ array.push(`col-${str}${obj.span}`)}
-      if(obj.offset){ array.push(`col-${str}${obj.offset}`)}
+      if(obj.offset){ array.push(`offset-${str}${obj.offset}`)}
       return array
     }
   },
@@ -36,11 +36,11 @@ export default {
       let {span, offset, ipad, narrowPc, pc, widePc} = this
       let {createClass} = this
       return [
-          createClass({span,offset}),
-          createClass(ipad, 'ipad-'),
-          createClass(narrowPc, 'narrow-pc-'),
-          createClass(pc, 'pc-'),
-          createClass(widePc, 'wide-pc-')
+          ...createClass({span,offset}),
+          ...createClass(ipad, 'ipad-'),
+          ...createClass(narrowPc, 'narrow-pc-'),
+          ...createClass(pc, 'pc-'),
+          ...createClass(widePc, 'wide-pc-')
 
       ]
     },
