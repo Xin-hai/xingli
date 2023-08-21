@@ -22,16 +22,26 @@ export default {
       gutter: 0
     }
   },
+  methods: {
+    createClass(obj, str = ''){
+      if(!obj){return []}
+      let array = []
+      if(obj.span){ array.push(`col-${str}${obj.span}`)}
+      if(obj.offset){ array.push(`col-${str}${obj.offset}`)}
+      return array
+    }
+  },
   computed: {
     colClass(){
-      let {span, offset, phone, ipad, narrowPc, pc, widePc} = this
+      let {span, offset, ipad, narrowPc, pc, widePc} = this
+      let {createClass} = this
       return [
-        span && `col-${span}`,
-        offset && `offset-${offset}`,
-        ...(ipad ? [`col-ipad-${ipad.span}`] : []),
-        ...(narrowPc ? [`col-narrow-pc-${narrowPc.span}`]: []),
-        ...(pc ? [`col-pc-${pc.span}`] : []),
-        ...(widePc ? [`col-wide-pc-${widePc.span}`] : [])
+          createClass({span,offset}),
+          createClass(ipad, 'ipad-'),
+          createClass(narrowPc, 'narrow-pc-'),
+          createClass(pc, 'pc-'),
+          createClass(widePc, 'wide-pc-')
+
       ]
     },
     colStyle() {
