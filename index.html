@@ -28,31 +28,12 @@
         }
     </style>
     <style>
-        .side {
-            background: #333;
-            width: 200px;
-        }
-        .header {
-            background: #999;
-            height: 100px;
-        }
-        .footer {
-            background: #ccc;
-            height: 50px;
-        }
+
     </style>
 </head>
 <body>
 <div id="app">
-    <g-layout style="height:100vh">
-        <g-side> 我是side</g-side>
-        <g-layout>
-            <g-header> 我是header</g-header>
-            <g-content> 我是content</g-content>
-            <g-footer> 我是footer</g-footer>
-        </g-layout>
-    </g-layout>
-
+    <button @click="showToast">我要showToast</button>
 </div>
 <script src="./src/app.js"></script>
 

@@ -2,14 +2,16 @@ import Vue from 'vue'
 import Button from "./button.vue";
 import icon from './icon.vue'
 import ButtonGroup from "./button-group.vue";
-import Input from './input.vue'
-import Row from './row.vue'
-import Col from './col.vue'
-import Layout from './layout.vue'
+import Input from './input.vue';
+import Row from './row.vue';
+import Col from './col.vue';
+import Layout from './layout.vue';
 import Header from "./header.vue";
-import Side from './side.vue'
+import Side from './side.vue';
 import Footer from "./footer.vue";
 import Content from "./content.vue";
+import Toast from './toast.vue';
+import plugin from './plugin';
 
 Vue.config.productionTip = false
 
@@ -24,6 +26,9 @@ Vue.component('g-header', Header)
 Vue.component('g-side', Side)
 Vue.component('g-footer', Footer)
 Vue.component('g-content', Content)
+Vue.component('g-toast', Toast)
+
+Vue.use(plugin)
 
 
 new Vue({
@@ -34,8 +39,10 @@ new Vue({
         loading3: false,
         message: 'hi'
     },
-    methods:{
-
+    methods: {
+        showToast(){
+            this.$toast('我是 message')
+        }
     }
 })
 
