@@ -1,13 +1,56 @@
 <template>
   <div class="toast">
     <slot></slot>
+    <div class="line"></div>
+    <span class="close" v-if="closeButton" @click="onClickClose()">{{closeButton.text}}</span>
   </div>
 </template>
 
 <script>
 
 export default {
-  name: "XingToast"
+  name: "XingToast",
+  props: {
+    autoClose: {
+      type: Boolean,
+      default: true
+    },
+    autoCloseDelay: {
+      type: Number,
+      default: 50
+    },
+    closeButton: {
+      type: Object,
+      default() {
+        return{
+          text: '关闭',
+          callback: undefined
+        }
+      }
+    }
+  },
+  methods: {
+    close(){
+      this.$el.remove()
+      this.$destroy()
+    },
+    onClickClose(){
+      this.close()
+      if(this.closeButton && typeof this.closeButton.callback === "function"){
+        this.closeButton.callback()
+      }
+    }
+  },
+  created() {
+
+  },
+  mounted(){
+    if(this.autoClose){
+      setTimeout(()=>{
+        this.close()
+      },  this.autoCloseDelay* 1000)
+    }
+  }
 }
 </script>
 
@@ -21,6 +64,14 @@ $toast-color: #67c23a;
   position: fixed;top:0;left: 50%;transform: translateX(-50%);
   font-size: $font-size;height: $toast-height;line-height: 1.8;
   background: $toast-bg;border-radius: 4px; color: $toast-color;
-  box-shadow: 0 0 3px 0 lighten($toast-color,20%);padding: 0 16px;
+  box-shadow: 0 0 3px 0 lighten($toast-color,5%);padding: 0 16px;
+  >.line{
+    border-left: 1px solid #dcf1d1;
+    margin-left: 16px;
+    height: 100%;
+  }
+  > .close {
+    padding-left: 16px;
+  }
 }
 </style>
