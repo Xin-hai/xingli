@@ -9,7 +9,7 @@ export default {
   name: "XingRow",
   props: {
     gutter: {
-      type: Number | String
+      type: [Number,String]
     },
     align: {
       type: String,

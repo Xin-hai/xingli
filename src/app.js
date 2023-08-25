@@ -41,8 +41,17 @@ new Vue({
     },
     methods: {
         showToast(){
-            this.$toast('<p>我是 <strong>加粗文字</strong><a href="https://qq.com" >qq.com</a></p> <p>我是 <strong>加粗文字</strong><a href="https://qq.com" >qq.com</a></p> <p>我是 <strong>加粗文字</strong><a href="https://qq.com" >qq.com</a></p> ',{
-                enableHtml: false
+            this.$toast(`我是 message我是 ${Math.random()*100} ` ,{
+                enableHtml: false,
+                autoClose: true,
+                autoCloseDelay: 300,
+                position: 'right',
+                closeButton: {
+                    text: '确认关闭',
+                    callback(){
+                        console.log('确认关闭')
+                    }
+                }
             })
         }
     },
