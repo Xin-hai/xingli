@@ -41,8 +41,8 @@ new Vue({
     },
     methods: {
         showToast(){
-            this.$toast('我是 message',{
-
+            this.$toast('<p>我是 <strong>加粗文字</strong><a href="https://qq.com" >qq.com</a></p> ',{
+                enableHtml: false
             })
         }
     },
@@ -55,7 +55,6 @@ new Vue({
         //     //     }
         //     // }
         // })
-
     }
 })
 
