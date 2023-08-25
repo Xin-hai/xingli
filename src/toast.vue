@@ -1,7 +1,10 @@
 <template>
   <div class="toast" ref="toast">
-    <div v-html="$slots.default[0]" v-if="enableHtml"></div>
-    <slot v-else></slot>
+    <div class="message">
+      <div v-html="$slots.default[0]" v-if="enableHtml"></div>
+      <slot v-else></slot>
+    </div>
+
     <div class="line" ref="line"></div>
     <span class="close" v-if="closeButton" @click="onClickClose()">{{closeButton.text}}</span>
   </div>
@@ -35,6 +38,19 @@ export default {
     }
   },
   methods: {
+    executeAutoClose(){
+      if(this.autoClose){
+        setTimeout(()=>{
+          this.close()
+        },  this.autoCloseDelay* 1000)
+      }
+    },
+    updateStyle(){
+      this.$nextTick(()=> {
+        this.$refs.line.style.height =
+            `${this.$refs.toast.getBoundingClientRect().height}px`
+      })
+    },
     close(){
       this.$el.remove()
       this.$destroy()
@@ -50,15 +66,8 @@ export default {
 
   },
   mounted(){
-    if(this.autoClose){
-      setTimeout(()=>{
-        this.close()
-      },  this.autoCloseDelay* 1000)
-    }
-    this.$nextTick(()=> {
-      console.log(this.$refs.toast.getBoundingClientRect());
-      this.$refs.line.style.height =  `${this.$refs.toast.getBoundingClientRect().height}px`
-    })
+    this.updateStyle()
+    this.executeAutoClose()
   }
 }
 </script>
@@ -74,6 +83,9 @@ $toast-color: #67c23a;
   font-size: $font-size;min-height: $toast-min-height;line-height: 1.8;
   background: $toast-bg;border-radius: 4px; color: $toast-color;
   box-shadow: 0 0 3px 0 lighten($toast-color,5%);padding: 0 16px;
+  > .message{
+    padding: 8px 0;
+  }
   >.line{
     border-left: 1px solid #dcf1d1;
     margin-left: 16px;
@@ -82,6 +94,7 @@ $toast-color: #67c23a;
   > .close {
     padding-left: 16px;
     flex-shrink: 0;
+    cursor: pointer;
   }
 }
 </style>
