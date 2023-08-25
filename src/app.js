@@ -40,7 +40,63 @@ new Vue({
         message: 'hi'
     },
     methods: {
-        showToast(){
+        showToast1(){
+            this.$toast(`我是 message我是 ${Math.random()*100} ` ,{
+                enableHtml: false,
+                autoClose: true,
+                autoCloseDelay: 300,
+                position: 'top',
+                closeButton: {
+                    text: '确认关闭',
+                    callback(){
+                        console.log('确认关闭')
+                    }
+                }
+            })
+        },
+        showToast2(){
+            this.$toast(`我是 message我是 ${Math.random()*100} ` ,{
+                enableHtml: false,
+                autoClose: true,
+                autoCloseDelay: 300,
+                position: 'middle',
+                closeButton: {
+                    text: '确认关闭',
+                    callback(){
+                        console.log('确认关闭')
+                    }
+                }
+            })
+        },
+        showToast3(){
+            this.$toast(`我是 message我是 ${Math.random()*100} ` ,{
+                enableHtml: false,
+                autoClose: true,
+                autoCloseDelay: 300,
+                position: 'bottom',
+                closeButton: {
+                    text: '确认关闭',
+                    callback(){
+                        console.log('确认关闭')
+                    }
+                }
+            })
+        },
+        showToast4(){
+            this.$toast(`我是 message我是 ${Math.random()*100} ` ,{
+                enableHtml: false,
+                autoClose: true,
+                autoCloseDelay: 300,
+                position: 'left',
+                closeButton: {
+                    text: '确认关闭',
+                    callback(){
+                        console.log('确认关闭')
+                    }
+                }
+            })
+        },
+        showToast5(){
             this.$toast(`我是 message我是 ${Math.random()*100} ` ,{
                 enableHtml: false,
                 autoClose: true,
