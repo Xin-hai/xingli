@@ -1,5 +1,5 @@
 <template>
-  <div class="toast" ref="toast">
+  <div class="toast" ref="toast" :class="toastClass">
     <div class="message">
       <div v-html="$slots.default[0]" v-if="enableHtml"></div>
       <slot v-else></slot>
@@ -21,7 +21,7 @@ export default {
     },
     autoCloseDelay: {
       type: Number,
-      default: 500
+      default: 5
     },
     closeButton: {
       type: Object,
@@ -35,6 +35,20 @@ export default {
     enableHtml: {
       type: Boolean,
       default: false
+    },
+    position: {
+      type: String,
+      default: 'top',
+      validator(value){
+        return ['top','middle','bottom','left','right'].includes(value)
+      }
+    }
+  },
+  computed: {
+    toastClass(){
+      return {
+        [`position-${this.position}`]: true
+      }
     }
   },
   methods: {
@@ -79,7 +93,7 @@ $toast-bg: #f0f9eb;
 $toast-color: #67c23a;
 .toast {
   display: flex;align-items: center;
-  position: fixed;top:0;left: 50%;transform: translateX(-50%);
+  position: fixed;
   font-size: $font-size;min-height: $toast-min-height;line-height: 1.8;
   background: $toast-bg;border-radius: 4px; color: $toast-color;
   box-shadow: 0 0 3px 0 lighten($toast-color,5%);padding: 0 16px;
@@ -95,6 +109,31 @@ $toast-color: #67c23a;
     padding-left: 16px;
     flex-shrink: 0;
     cursor: pointer;
+  }
+  &.position-top{
+    left: 50%;
+    top:0;
+    transform: translateX(-50%);
+  }
+  &.position-middle{
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+  }
+  &.position-bottom{
+    left: 50%;
+    bottom: 0;
+    transform: translateX(-50%);
+  }
+  &.position-left{
+    left: 0;
+    top: 50%;
+    transform: translateY(-50%);
+  }
+  &.position-right{
+    right: 0;
+    top: 50%;
+    transform: translateY(-50%);
   }
 }
 </style>
