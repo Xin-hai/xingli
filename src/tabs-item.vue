@@ -36,11 +36,7 @@ export default {
   },
   mounted(){
     this.eventBus.$on('update:selected',(name)=>{
-      if(name === this.name){
-        this.active = true
-      }else{
-        this.active = false
-      }
+      this.active = name === this.name;
     })
   },
   methods: {
@@ -55,6 +51,11 @@ export default {
   .tabs-item {
     flex-shrink: 0;
     padding: 0 2em;
+    cursor: pointer;
+    border: 1px solid green;
+    height: 100%;
+    display: flex;
+    align-items: center;
     &.active{
       background: red;
     }
