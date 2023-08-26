@@ -36,8 +36,9 @@ export default {
 
 <style scoped lang="scss">
   .tabs-panel {
+    padding: 1em 0;
     &.active{
-      background: red;
+
     }
   }
 </style>

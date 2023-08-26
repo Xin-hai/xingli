@@ -12,10 +12,11 @@
 export default {
   name: "XingTabsHead",
   inject: ['eventBus'],
-  created(){
+  mounted(){
     this.eventBus.$on('update:selected',(item,vm)=> {
-      // console.log(item);
-      // console.log(vm);
+      let {width,height,top,left} = vm.$el.getBoundingClientRect()
+      this.$refs.line.style.width = `${width}px`
+      this.$refs.line.style.left = `${left}px`
     })
   }
 }
@@ -23,22 +24,27 @@ export default {
 
 <style scoped lang="scss">
 $tabs-head-height: 40px;
+$border-color: #ddd;
 $blue: #1677ff;
   .tabs-head {
-    border: 1px solid red;
     display: flex;
     height: $tabs-head-height;
     justify-content: flex-start;
     align-items: center;
     position: relative;
+    border-bottom: 1px solid $border-color;
     >.line{
       position: absolute;
       bottom: 0;
       border-bottom: 2px solid $blue;
-      width: 100px;
+      transition: left 300ms,width 300ms;
     }
     >.actions-wrapper{
       margin-left: auto;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      padding: 0 1em;
     }
   }
 </style>

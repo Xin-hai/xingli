@@ -32,7 +32,6 @@ export default {
   },
   inject: ['eventBus'],
   created(){
-
   },
   mounted(){
     this.eventBus.$on('update:selected',(name)=>{

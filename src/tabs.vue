@@ -27,11 +27,10 @@ export default {
     }
   },
   mounted() {
-   this.$children.map((vm)=>{
+    this.$children.map((vm)=>{
      if(vm.$options.name === 'XingTabsHead'){
        vm.$children.map((childVm)=> {
-         if(childVm.$options.name === 'XingTabsItem' && childVm.name ===this.selected){
-          console.log(childVm.$el)
+         if(childVm.$options.name === 'XingTabsItem' && childVm.name === this.selected){
            this.eventBus.$emit('update:selected', this.selected, childVm)
          }
        })
