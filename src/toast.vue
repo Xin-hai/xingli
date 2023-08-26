@@ -17,12 +17,11 @@ export default {
   name: "XingToast",
   props: {
     autoClose: {
-      type: Boolean,
-      default: true
-    },
-    autoCloseDelay: {
-      type: Number,
-      default: 5
+      type: [Boolean,Number],
+      default: 5,
+      validator(value) {
+        return value === false || typeof value === 'number';
+      }
     },
     closeButton: {
       type: Object,
@@ -57,7 +56,7 @@ export default {
       if(this.autoClose){
         setTimeout(()=>{
           this.close()
-        },  this.autoCloseDelay* 1000)
+        },  this.autoClose* 1000)
       }
     },
     updateStyle(){
@@ -169,7 +168,7 @@ $animation-time: 0.5s;
   display: flex;align-items: center;
   font-size: $font-size;min-height: $toast-min-height;line-height: 1.8;
   background: $toast-bg;border-radius: 4px; color: $toast-color;
-  box-shadow: 0 0 3px 0 lighten($toast-color,5%);padding: 0 16px;
+  box-shadow: 0 0 2px 0 lighten($toast-color,5%);padding: 0 16px;
    .message{
     padding: 8px 0;
   }

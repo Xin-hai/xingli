@@ -41,10 +41,9 @@ new Vue({
     },
     methods: {
         showToast1(){
-            this.$toast(`我是 message我是 ${Math.random()*100} ` ,{
+            this.$toast(`我是 message我是 ${parseInt((Math.random()*100).toString())} ` ,{
                 enableHtml: false,
-                autoClose: true,
-                autoCloseDelay: 300,
+                autoClose: 3,
                 position: 'top',
                 closeButton: {
                     text: '确认关闭',
@@ -55,10 +54,9 @@ new Vue({
             })
         },
         showToast2(){
-            this.$toast(`我是 message我是 ${Math.random()*100} ` ,{
+            this.$toast(`我是 message我是 ${parseInt((Math.random()*100).toString())} ` ,{
                 enableHtml: false,
-                autoClose: true,
-                autoCloseDelay: 300,
+                autoClose: 3,
                 position: 'middle',
                 closeButton: {
                     text: '确认关闭',
@@ -69,10 +67,9 @@ new Vue({
             })
         },
         showToast3(){
-            this.$toast(`我是 message我是 ${Math.random()*100} ` ,{
+            this.$toast(`我是 message我是 ${parseInt((Math.random()*100).toString())} ` ,{
                 enableHtml: false,
-                autoClose: true,
-                autoCloseDelay: 300,
+                autoClose: 3,
                 position: 'bottom',
                 closeButton: {
                     text: '确认关闭',
@@ -83,10 +80,9 @@ new Vue({
             })
         },
         showToast4(){
-            this.$toast(`我是 message我是 ${Math.random()*100} ` ,{
+            this.$toast(`我是 message我是 ${parseInt((Math.random()*100).toString())} ` ,{
                 enableHtml: false,
-                autoClose: true,
-                autoCloseDelay: 300,
+                autoClose: 3,
                 position: 'left',
                 closeButton: {
                     text: '确认关闭',
@@ -97,10 +93,9 @@ new Vue({
             })
         },
         showToast5(){
-            this.$toast(`我是 message我是 ${Math.random()*100} ` ,{
+            this.$toast(`我是 message我是 ${parseInt((Math.random()*100).toString())} ` ,{
                 enableHtml: false,
-                autoClose: true,
-                autoCloseDelay: 300,
+                autoClose: 3,
                 position: 'right',
                 closeButton: {
                     text: '确认关闭',
@@ -109,18 +104,10 @@ new Vue({
                     }
                 }
             })
-        }
+        },
+
     },
-    created(){
-        // this.$toast('我是 message', {
-        //     // closeButton: {
-        //     //     text: '知道',
-        //     //     callback(){
-        //     //         console.log('用户说他知道了')
-        //     //     }
-        //     // }
-        // })
-    }
+    created(){}
 })
 
 
