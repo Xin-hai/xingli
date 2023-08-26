@@ -12,6 +12,11 @@ import Footer from "./footer.vue";
 import Content from "./content.vue";
 import Toast from './toast.vue';
 import plugin from './plugin';
+import Tabs from './tabs.vue'
+import TabsItem from "./tabs-item.vue";
+import TabsBody from "./tabs-body.vue";
+import TabsPanel from "./tabs-panel.vue";
+import TabsHead from "./tabs-head.vue";
 
 Vue.config.productionTip = false
 
@@ -27,6 +32,11 @@ Vue.component('g-side', Side)
 Vue.component('g-footer', Footer)
 Vue.component('g-content', Content)
 Vue.component('g-toast', Toast)
+Vue.component('g-tabs', Tabs)
+Vue.component('g-tabs-item', TabsItem)
+Vue.component('g-tabs-body', TabsBody)
+Vue.component('g-tabs-panel', TabsPanel)
+Vue.component('g-tabs-head', TabsHead)
 
 Vue.use(plugin)
 
@@ -37,75 +47,8 @@ new Vue({
         loading1: false,
         loading2: true,
         loading3: false,
-        message: 'hi'
-    },
-    methods: {
-        showToast1(){
-            this.$toast(`我是 message我是 ${parseInt((Math.random()*100).toString())} ` ,{
-                enableHtml: false,
-                autoClose: 3,
-                position: 'top',
-                closeButton: {
-                    text: '确认关闭',
-                    callback(){
-                        console.log('确认关闭')
-                    }
-                }
-            })
-        },
-        showToast2(){
-            this.$toast(`我是 message我是 ${parseInt((Math.random()*100).toString())} ` ,{
-                enableHtml: false,
-                autoClose: 3,
-                position: 'middle',
-                closeButton: {
-                    text: '确认关闭',
-                    callback(){
-                        console.log('确认关闭')
-                    }
-                }
-            })
-        },
-        showToast3(){
-            this.$toast(`我是 message我是 ${parseInt((Math.random()*100).toString())} ` ,{
-                enableHtml: false,
-                autoClose: 3,
-                position: 'bottom',
-                closeButton: {
-                    text: '确认关闭',
-                    callback(){
-                        console.log('确认关闭')
-                    }
-                }
-            })
-        },
-        showToast4(){
-            this.$toast(`我是 message我是 ${parseInt((Math.random()*100).toString())} ` ,{
-                enableHtml: false,
-                autoClose: 3,
-                position: 'left',
-                closeButton: {
-                    text: '确认关闭',
-                    callback(){
-                        console.log('确认关闭')
-                    }
-                }
-            })
-        },
-        showToast5(){
-            this.$toast(`我是 message我是 ${parseInt((Math.random()*100).toString())} ` ,{
-                enableHtml: false,
-                autoClose: 3,
-                position: 'right',
-                closeButton: {
-                    text: '确认关闭',
-                    callback(){
-                        console.log('确认关闭')
-                    }
-                }
-            })
-        },
-
+        message: 'hi',
+        selectedTab: 'sports'
     },
     created(){}
 })

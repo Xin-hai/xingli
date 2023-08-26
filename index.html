@@ -33,11 +33,23 @@
 </head>
 <body>
 <div id="app">
-    <button @click="showToast1">我要showToast1</button>
-    <button @click="showToast2">我要showToast2</button>
-    <button @click="showToast3">我要showToast3</button>
-    <button @click="showToast4">我要showToast4</button>
-    <button @click="showToast5">我要showToast5</button>
+    <g-tabs>
+        <g-tabs-head :selected.sync="selectedTab" >
+            <template v-slot:actions>
+                <g-button ><g-icon name="settings"></g-icon>设置</g-button>
+            </template>
+            <g-tabs-item name="study">
+                <g-icon name="settings"></g-icon>学习
+            </g-tabs-item>
+            <g-tabs-item name="thinking" :disabled="true">思考</g-tabs-item>
+            <g-tabs-item name="sports">运动</g-tabs-item>
+        </g-tabs-head>
+        <g-tabs-body>
+            <g-tabs-panel name="study">学习相关资讯</g-tabs-panel>
+            <g-tabs-panel name="thinking">思考相关资讯</g-tabs-panel>
+            <g-tabs-panel name="spors">运动相关资讯</g-tabs-panel>
+        </g-tabs-body>
+    </g-tabs>
 </div>
 <script src="./src/app.js"></script>
 
