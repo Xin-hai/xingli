@@ -47,7 +47,8 @@ export default {
 </script>
 
 <style scoped lang="scss">
+$color-scheme-light: light;
   .tabs {
-
+    color-scheme: $color-scheme-light;
   }
 </style>
