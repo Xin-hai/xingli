@@ -27,7 +27,17 @@ export default {
     }
   },
   mounted() {
-    this.eventBus.$emit('update:selected', this.selected)
+   this.$children.map((vm)=>{
+     if(vm.$options.name === 'XingTabsHead'){
+       vm.$children.map((childVm)=> {
+         if(childVm.$options.name === 'XingTabsItem' && childVm.name ===this.selected){
+          console.log(childVm.$el)
+           this.eventBus.$emit('update:selected', this.selected, childVm)
+         }
+       })
+     }
+   })
+
   },
   provide(){
     return {
