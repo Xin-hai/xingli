@@ -1,5 +1,5 @@
 <template>
-  <div class="tabs-item">
+  <div class="tabs-item" @click="xxx" :class="classes">
       <slot></slot>
   </div>
 </template>
@@ -11,6 +11,41 @@ export default {
     disabled: {
       type: Boolean,
       default: false
+    },
+    name: {
+      type: [String, Number],
+      require: true
+    },
+    props: {}
+  },
+  data(){
+    return {
+      active: false
+    }
+  },
+  computed: {
+    classes(){
+      return {
+        active: this.active
+      }
+    }
+  },
+  inject: ['eventBus'],
+  created(){
+
+  },
+  mounted(){
+    this.eventBus.$on('update:selected',(name)=>{
+      if(name === this.name){
+        this.active = true
+      }else{
+        this.active = false
+      }
+    })
+  },
+  methods: {
+    xxx(){
+      this.eventBus.$emit('update:selected', this.name)
     }
   }
 }
@@ -18,6 +53,10 @@ export default {
 
 <style scoped lang="scss">
   .tabs-item {
-
+    flex-shrink: 0;
+    padding: 0 2em;
+    &.active{
+      background: red;
+    }
   }
 </style>

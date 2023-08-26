@@ -6,7 +6,9 @@
 
 <script>
 export default {
-  name: "XingTabsBody"
+  name: "XingTabsBody",
+  inject: ['eventBus'],
+  created(){}
 }
 </script>
 

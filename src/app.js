@@ -50,7 +50,13 @@ new Vue({
         message: 'hi',
         selectedTab: 'sports'
     },
-    created(){}
+    created(){},
+    methods:{
+        yyy(data){
+            console.log('yyy')
+            console.log(data)
+        }
+    }
 })
 
 
