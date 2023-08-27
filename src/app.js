@@ -19,6 +19,7 @@ import TabsPanel from "./tabs-panel.vue";
 import TabsHead from "./tabs-head.vue";
 import Collapse from "./collapse.vue";
 import CollapseItem from "./collapse-item.vue";
+import Popover from "./popover.vue";
 
 Vue.config.productionTip = false
 
@@ -41,6 +42,7 @@ Vue.component('g-tabs-panel', TabsPanel)
 Vue.component('g-tabs-head', TabsHead)
 Vue.component('g-collapse', Collapse)
 Vue.component('g-collapse-item', CollapseItem)
+Vue.component('g-popover', Popover)
 
 Vue.use(plugin)
 
