@@ -17,6 +17,8 @@ import TabsItem from "./tabs-item.vue";
 import TabsBody from "./tabs-body.vue";
 import TabsPanel from "./tabs-panel.vue";
 import TabsHead from "./tabs-head.vue";
+import Collapse from "./collapse.vue";
+import CollapseItem from "./collapse-item.vue";
 
 Vue.config.productionTip = false
 
@@ -37,6 +39,8 @@ Vue.component('g-tabs-item', TabsItem)
 Vue.component('g-tabs-body', TabsBody)
 Vue.component('g-tabs-panel', TabsPanel)
 Vue.component('g-tabs-head', TabsHead)
+Vue.component('g-collapse', Collapse)
+Vue.component('g-collapse-item', CollapseItem)
 
 Vue.use(plugin)
 
@@ -52,10 +56,7 @@ new Vue({
     },
     created(){},
     methods:{
-        yyy(data){
-            console.log('yyy')
-            console.log(data)
-        }
+
     }
 })
 

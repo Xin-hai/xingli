@@ -20,38 +20,22 @@
         }
 
         #app {
-
+            padding: 100px;
         }
 
         body {
             font-size: var(--font-size);
         }
     </style>
-    <style>
 
-    </style>
 </head>
 <body>
 <div id="app">
-
-
-    <g-tabs @update:selected="yyy" :selected.sync="selectedTab">
-        <g-tabs-head  >
-            <template v-slot:actions>
-                <button>设置</button>
-            </template>
-            <g-tabs-item name="study">
-              学习
-            </g-tabs-item>
-            <g-tabs-item name="thinking">思考</g-tabs-item>
-            <g-tabs-item name="sports">运动</g-tabs-item>
-        </g-tabs-head>
-        <g-tabs-body>
-            <g-tabs-panel name="study">学习相关资讯</g-tabs-panel>
-            <g-tabs-panel name="thinking">思考相关资讯</g-tabs-panel>
-            <g-tabs-panel name="sports">运动相关资讯</g-tabs-panel>
-        </g-tabs-body>
-    </g-tabs>
+    <g-collapse>
+        <g-collapse-item title="标题1">内容1</g-collapse-item>
+        <g-collapse-item title="标题2">内容2</g-collapse-item>
+        <g-collapse-item title="标题3">内容3</g-collapse-item>
+    </g-collapse>
 </div>
 <script src="./src/app.js"></script>
 
