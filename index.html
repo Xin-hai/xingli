@@ -33,6 +33,8 @@
 </head>
 <body>
 <div id="app">
+
+
     <g-tabs @update:selected="yyy" :selected.sync="selectedTab">
         <g-tabs-head  >
             <template v-slot:actions>
@@ -42,7 +44,7 @@
               学习
             </g-tabs-item>
             <g-tabs-item name="thinking">思考</g-tabs-item>
-            <g-tabs-item name="sports" :disabled="true">运动</g-tabs-item>
+            <g-tabs-item name="sports">运动</g-tabs-item>
         </g-tabs-head>
         <g-tabs-body>
             <g-tabs-panel name="study">学习相关资讯</g-tabs-panel>

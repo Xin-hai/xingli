@@ -27,6 +27,10 @@ export default {
     }
   },
   mounted() {
+    if(this.$children.length === 0){
+      console.warn &&console.warn('tabs的子组件应该是tabs-head和tabs-body，但是你没写这两个子组件')
+      throw new Error('tabs的子组件应该是tabs-head和tabs-body，但是你没写这两个子组件')
+    }
     this.$children.map((vm)=>{
      if(vm.$options.name === 'XingTabsHead'){
        vm.$children.map((childVm)=> {
