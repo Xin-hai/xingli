@@ -44,5 +44,4 @@ describe('Tabs', () => {
             done()
         },1000)
     })
-    xit('接收direction',()=> {})
 })
