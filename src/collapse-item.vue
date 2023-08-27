@@ -1,25 +1,21 @@
 <template>
   <div class="collapse-item">
-    <div v-text="title" class="title" @click="toggle"></div>
+    <div v-text="title" class="title" @click="toggle" :class="classes"></div>
+    <transition name="fade">
     <div class="content" v-if="open" >
       <slot></slot>
     </div>
+      </transition>
   </div>
 </template>
 
 <script>
 export default {
   name: "XingCollapseItem",
-  // inject: ['eventBus'],
-  inject: {
-    eventBus: {
-      default: '',
-
-    }
-  },
+  inject: ['eventBus'],
   data(){
     return{
-      open: false
+      open: false,
     }
   },
   props: {
@@ -30,32 +26,33 @@ export default {
     name: {
       type: String,
       require: true
+    },
+    disabled: {
+      type: Boolean,
+      default: false
+    }
+  },
+  computed: {
+    classes(){
+      return {
+        disabled: this.disabled
+      }
     }
   },
   methods: {
     toggle(){
       if(this.open){
-        this.open = false
+        this.eventBus && this.eventBus.$emit('update:removeSelected', this.name)
       }else{
-       this.eventBus && this.eventBus.$emit('update:selected', this.name)
-        // this.open = true
+        if(this.disabled){return}
+       this.eventBus && this.eventBus.$emit('update:addSelected', this.name)
       }
-    },
-    close(){
-      this.open = false
-    },
-    show(){
-      this.open = true
     }
   },
   mounted(){
     if(this.eventBus){
-      this.eventBus.$on('update:selected', (name)=>{
-        if(name !== this.name){
-          this.close()
-        }else{
-          this.show()
-        }
+      this.eventBus.$on('update:selected', (names)=>{
+        this.open = names.indexOf(this.name) >= 0;
       })
     }
   }
@@ -66,6 +63,7 @@ export default {
 $color-grey: #ddd ;
 $border-radius: 4px;
 $min-height: 32px;
+$color-disabled: rgba(0, 0, 0, 0.25);
   .collapse-item{
     >.title{
       border: 1px solid $color-grey;
@@ -76,9 +74,21 @@ $min-height: 32px;
       margin-left: -1px;
       display: flex;
       align-items: center;
+      cursor: pointer;
     }
-    >.content{
+    .disabled{
+      cursor: not-allowed;
+      color: $color-disabled;
+    }
+    .content{
       padding: 8px;
+    }
+    .fade-enter-active, .fade-leave-active {
+      transition: opacity .5s;
+    }
+    .fade-enter, .fade-leave-to  {
+      transform: translateX(10px);
+      opacity: 0;
     }
   }
 </style>
