@@ -1,6 +1,6 @@
 <template>
   <div class="collapse-item">
-    <div v-text="title" class="title" @click="open=!open"></div>
+    <div v-text="title" class="title" @click="toggle"></div>
     <div class="content" v-if="open" >
       <slot></slot>
     </div>
@@ -10,6 +10,13 @@
 <script>
 export default {
   name: "XingCollapseItem",
+  // inject: ['eventBus'],
+  inject: {
+    eventBus: {
+      default: '',
+
+    }
+  },
   data(){
     return{
       open: false
@@ -19,6 +26,28 @@ export default {
     title: {
       type: String,
       require: true
+    }
+  },
+  methods: {
+    toggle(){
+      if(this.open){
+        this.open = false
+      }else{
+        this.open = true
+       this.eventBus && this.eventBus.$emit('update:selected', this)
+      }
+    },
+    close(){
+      this.open = false
+    }
+  },
+  mounted(){
+    if(this.eventBus){
+      this.eventBus.$on('update:selected', (vm)=>{
+        if(vm !== this){
+          this.close()
+        }
+      })
     }
   }
 }

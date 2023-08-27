@@ -5,8 +5,26 @@
 </template>
 
 <script>
+import Vue from 'vue'
 export default {
-  name: "XingCollapse"
+  name: "XingCollapse",
+  data(){
+    return {
+      eventBus: new Vue()
+    }
+  },
+  props: {
+    multiple: {
+      default: false,
+      type: Boolean
+    }
+  },
+  provide(){
+    if(this.multiple){return }
+    return {
+      eventBus: this.eventBus
+    }
+  }
 }
 </script>
 
