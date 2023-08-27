@@ -17,6 +17,9 @@ export default {
     multiple: {
       default: false,
       type: Boolean
+    },
+    selected: {
+      type: String
     }
   },
   provide(){
@@ -24,6 +27,13 @@ export default {
     return {
       eventBus: this.eventBus
     }
+  },
+  mounted(){
+    this.eventBus.$emit('update:selected', this.selected)
+    this.eventBus.$on('update:selected',(name)=> {
+      this.$emit('update:selected', name)
+    })
+
   }
 }
 </script>

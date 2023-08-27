@@ -52,7 +52,7 @@ new Vue({
         loading2: true,
         loading3: false,
         message: 'hi',
-        selectedTab: 'thinking'
+        selectedTab: '2'
     },
     created(){},
     methods:{

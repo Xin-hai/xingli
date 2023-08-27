@@ -26,6 +26,10 @@ export default {
     title: {
       type: String,
       require: true
+    },
+    name: {
+      type: String,
+      require: true
     }
   },
   methods: {
@@ -33,19 +37,24 @@ export default {
       if(this.open){
         this.open = false
       }else{
-        this.open = true
-       this.eventBus && this.eventBus.$emit('update:selected', this)
+       this.eventBus && this.eventBus.$emit('update:selected', this.name)
+        // this.open = true
       }
     },
     close(){
       this.open = false
+    },
+    show(){
+      this.open = true
     }
   },
   mounted(){
     if(this.eventBus){
-      this.eventBus.$on('update:selected', (vm)=>{
-        if(vm !== this){
+      this.eventBus.$on('update:selected', (name)=>{
+        if(name !== this.name){
           this.close()
+        }else{
+          this.show()
         }
       })
     }
