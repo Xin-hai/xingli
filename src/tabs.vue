@@ -21,26 +21,33 @@ export default {
       }
     }
   },
+  methods: {
+    checkChildren(){
+      if(this.$children.length === 0){
+        console.warn &&console.warn('tabs的子组件应该是tabs-head和tabs-body，但是你没写这两个子组件')
+        throw new Error('tabs的子组件应该是tabs-head和tabs-body，但是你没写这两个子组件')
+      }
+    },
+    selectTab(){
+      this.$children.map((vm)=>{
+        if(vm.$options.name === 'XingTabsHead'){
+          vm.$children.map((childVm)=> {
+            if(childVm.$options.name === 'XingTabsItem' && childVm.name === this.selected){
+              this.eventBus.$emit('update:selected', this.selected, childVm)
+            }
+          })
+        }
+      })
+    }
+  },
   data(){
     return {
       eventBus : new Vue()
     }
   },
   mounted() {
-    if(this.$children.length === 0){
-      console.warn &&console.warn('tabs的子组件应该是tabs-head和tabs-body，但是你没写这两个子组件')
-      throw new Error('tabs的子组件应该是tabs-head和tabs-body，但是你没写这两个子组件')
-    }
-    this.$children.map((vm)=>{
-     if(vm.$options.name === 'XingTabsHead'){
-       vm.$children.map((childVm)=> {
-         if(childVm.$options.name === 'XingTabsItem' && childVm.name === this.selected){
-           this.eventBus.$emit('update:selected', this.selected, childVm)
-         }
-       })
-     }
-   })
-
+    this.checkChildren()
+    this.selectTab()
   },
   provide(){
     return {
