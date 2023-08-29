@@ -1,5 +1,5 @@
 <template>
-    <div class="popover" @click="onClick" ref="popover">
+    <div class="popover"  ref="popover">
       <div ref="contentWrapper" class="content-wrapper"  v-if="visible" :class="{[`position-${position}`]: true}">
         <slot name="content" ></slot>
       </div>
@@ -15,7 +15,23 @@ export default {
   name: "XingPopover",
   data(){
     return {
-      visible: false
+      visible: false,
+    }
+  },
+  mounted(){
+    if(this.trigger === 'click'){
+      this.$refs.popover.addEventListener('click', this.onClick)
+    }else {
+      this.$refs.popover.addEventListener('mouseenter', this.open)
+      this.$refs.popover.addEventListener('mouseleave', this.close)
+    }
+  },
+  destroyed(){
+    if(this.trigger === 'click'){
+      this.$refs.popover.addEventListener('click', this.onClick)
+    }else {
+      this.$refs.popover.addEventListener('mouseenter', this.open)
+      this.$refs.popover.addEventListener('mouseleave', this.close)
     }
   },
   props: {
@@ -24,6 +40,13 @@ export default {
       default: 'top',
       validator(value){
         return ['top','right','bottom','left'].includes(value)
+      }
+    },
+    trigger: {
+      type: String,
+      default: 'click',
+      validator(value) {
+        return ['click','hover'].includes(value);
       }
     }
   },
@@ -35,7 +58,7 @@ export default {
       const {height:height2} = contentWrapper.getBoundingClientRect()
 
       let positions = {
-        top: {top: window.scrollY + top, left:  window.scrollY + top},
+        top: {top: window.scrollY + top, left:  window.scrollY + left},
         bottom: {top: window.scrollY + top +height , left: left + window.scrollX},
         right: {top: window.scrollY + top+ (height -height2)/2 , left: left + window.scrollX + width},
         left: {top: window.scrollY + top+ (height -height2)/2 , left: left + window.scrollX},
@@ -74,8 +97,6 @@ export default {
        }
      }
     }
-  },
-  mounted() {
   }
 }
 </script>
@@ -107,7 +128,7 @@ export default {
         width: 0;
         position: absolute;
         }
-      &.position-top{
+        &.position-top{
         transform: translateY(-100%);
         margin-top: -10px;
         &::before,&::after{
@@ -116,10 +137,12 @@ export default {
         &:before {
           border-top-color: black;
           top: 100%;
+          border-bottom: none;
         }
         &::after{
           border-top-color: white;
           top: calc(100% - 1px);
+          border-bottom: none;
         }
       }
       &.position-bottom{
