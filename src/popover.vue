@@ -1,8 +1,10 @@
 <template>
     <div class="popover"  ref="popover">
+      <transition name="fade">
       <div ref="contentWrapper" class="content-wrapper"  v-if="visible" :class="{[`position-${position}`]: true}">
-        <slot name="content" ></slot>
+        <slot name="content" :close="close"></slot>
       </div>
+      </transition>
       <span ref="triggerWrapper" class="trigger-wrapper">
         <slot name="default" ></slot>
       </span>
@@ -201,4 +203,11 @@ export default {
     .trigger-wrapper{
       display: inline-flex;
     }
+
+  .fade-enter-active, .fade-leave-active {
+    transition: opacity 250ms;
+  }
+  .fade-enter, .fade-leave-to {
+    opacity: 0;
+  }
 </style>
