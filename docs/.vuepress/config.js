@@ -1,3 +1,6 @@
+const moment = require('moment');
+moment.locale("zh-cn");
+
 module.exports = {
     title: 'Xin UI',
     description: '一个好用的基于Vue的UI框架',
@@ -6,6 +9,16 @@ module.exports = {
         ['meta', { name: 'keywords', content: 'UI框架，Vue，Vuepress，xin' }]
     ],
     base: '/xingli/',
+    plugins: [
+        [
+            '@vuepress/last-updated',
+            {
+                transformer: (timestamp) => {
+                    return moment(timestamp).format("LLLL")
+                }
+            }
+        ]
+    ],
     themeConfig: {
         logo: '/img/logo.png',
         lastUpdated: '更新时间',
