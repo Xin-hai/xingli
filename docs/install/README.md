@@ -2,7 +2,7 @@
 title: 安装
 ---
 
-Xing UI是一个好用的UI框架，提供了 button、grid、input、layout、tabs、toast、popover和collapse等常用组件，
+Xin UI是一个好用的UI框架，提供了 button、grid、input、layout、tabs、toast、popover和collapse等常用组件，
 适合移动端和PC端使用，现在开始安装使用吧。
 # 安装
 
@@ -23,7 +23,7 @@ npm install xin-li
 rm -rf node_modules
 yarn install
 ```
-安装yarn
+yarn安装
 ```shell
 #最新稳定版
 yarn add xin-li

@@ -13,7 +13,7 @@ module.exports = {
     plugins: pluginConfig,
     themeConfig: {
         logo: '/img/logo.png',
-        lastUpdated: '更新时间',
+        lastUpdated: '上次更新',
         nav: navConfig,
         sidebar: sidebarConfig
     },
