@@ -68,3 +68,8 @@ export default {
 | disabled | false、true | Boolean |  设置是否能不可选中，默认false   |
 | selected |   Array    |  Array  | 设置选中的一项，其中值为name相同的值 |
 | multiple | true、false | Boolean |    设置是否多选，默认为true    |
+
+
+## 结束
+
+<img :src="$withBase('/img/ending.jpg')" alt="ending" class="custom">
