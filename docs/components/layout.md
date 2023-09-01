@@ -49,7 +49,7 @@ title: Layout - 布局
         <xin-content>content</xin-content>
         <xin-footer>footer</xin-footer>
       </xin-layout>
-      <xin-side should-close="true">side</xin-side>
+      <xin-side :should-close="true">side</xin-side>
     </xin-layout>
   </div>
 </template>
