@@ -2,13 +2,13 @@ const moment = require('moment');
 moment.locale("zh-cn");
 
 module.exports = {
+    base: '/xingli/',
     title: 'Xin UI',
     description: '一个好用的基于Vue的UI框架',
     head: [
         ['meta', { name: 'author', content: 'Xin-hai,新海' }],
         ['meta', { name: 'keywords', content: 'UI框架，Vue，Vuepress，xin' }]
     ],
-    base: '/xingli/',
     plugins: [
         [
             '@vuepress/last-updated',
@@ -17,7 +17,8 @@ module.exports = {
                     return moment(timestamp).format("LLLL")
                 }
             }
-        ]
+        ],
+        ['@vuepress/back-to-top']
     ],
     themeConfig: {
         logo: '/img/logo.png',
