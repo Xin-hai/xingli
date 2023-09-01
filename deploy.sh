@@ -22,4 +22,8 @@ git commit -m 'deploy'
 # 如果发布到 https://<USERNAME>.github.io/<REPO>
  git push -f git@github.com:Xin-hai/xingli.git master:gh-pages
 
+ # 发布到gitee
+# git push -f git@gitee.com:ZXInhai/xingli.git master:gh-pages
+
+
 cd -

@@ -26,17 +26,10 @@ features:
 
   details: VuePress 为每个页面预渲染生成静态的 HTML，同时在页面被加载的时候，将作为 SPA 运行。
 
-  footer: MIT Licensed | Copyright © 2018-present Evan You
+footer: MIT Licensed | Copyright © 2023-present Xin Hai
 
 ---
 
-[//]: # (# Xin UI 官网)
 
-[//]: # ()
-[//]: # ()
-[//]: # (Xing UI是一个好用的UI框架，提供了 button、grid、input、layout、tabs、toast、popover、collapse等常用组件，)
-
-[//]: # ()
-[//]: # (适合移动端和PC端使用，现在开始安装使用吧。)
 
 
