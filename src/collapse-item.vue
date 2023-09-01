@@ -84,10 +84,10 @@ $color-disabled: rgba(0, 0, 0, 0.25);
       padding: 8px;
     }
     .fade-enter-active, .fade-leave-active {
-      transition: opacity .5s;
+      transition: opacity .3s;
     }
     .fade-enter, .fade-leave-to  {
-      transform: translateX(10px);
+      transform: translateX(5px);
       opacity: 0;
     }
   }

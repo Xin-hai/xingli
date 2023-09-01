@@ -115,6 +115,7 @@ $animation-time: 0.5s;
 }
 .wrapper {
   position: fixed;
+  z-index: 30;
   &.position-top{
     left: 50%;
     top:0;

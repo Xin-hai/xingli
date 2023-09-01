@@ -2,19 +2,29 @@
   <transition name="slide">
   <div class="side" v-if="visible">
     <slot></slot>
-    <button @click="visible=false">close</button>
+    <g-button @click="visible=false" v-if="shouldClose">close</g-button>
   </div>
   </transition>
 </template>
 
 <script>
+import Button from './button.vue'
 export default {
   data(){
     return {
       visible: true
     }
   },
-  name: "XingSide"
+  components: {
+    'g-button': Button
+  },
+  name: "XingSide",
+  props: {
+    shouldClose: {
+      type: Boolean,
+      default: false
+    }
+  }
 }
 </script>
 
@@ -28,10 +38,10 @@ export default {
    }
  }
  .slide-enter-active, .slide-leave-active {
-   transition: all 0.5s;
+   transition: all 0.3s;
  }
  .slide-enter, .slide-leave-to {
-   margin-left: -200px;
+   margin-left: -150px;
  }
 
 </style>
